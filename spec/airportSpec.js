@@ -25,14 +25,19 @@ describe("Airport", function() {
     expect(airport.landedPlanes).not.toContain(plane);
   });
 
+  // As an air traffic controller
+  // To ensure safety
+  // I want to prevent landing when the airport is full
+
+  it("prevents a plane from landing when aiport full", function() {
+    for(i = 0; i < (DEFAULTCAPACITY); i ++) {
+      airport.land(plane);
+    }
+    expect( function(){airport.land(plane); } ).toThrow("Airport is full, jog on");
+  });
+
 });
 
-
-
-
-// As an air traffic controller
-// To ensure safety
-// I want to prevent landing when the airport is full
 //
 // As the system designer
 // So that the software can be used for many different airports
