@@ -6,6 +6,7 @@ describe("Airport", function() {
 
   var plane;
   var airport;
+  // var capacity = airport.DEFAULTCAPACITY;
 
   beforeEach(function() {
     airport = new Airport();
@@ -30,18 +31,28 @@ describe("Airport", function() {
   // I want to prevent landing when the airport is full
 
   it("prevents a plane from landing when aiport full", function() {
-    for(i = 0; i < (DEFAULTCAPACITY); i ++) {
+    for(i = 0; i < (airport.DEFAULTCAPACITY); i ++) {
       airport.land(plane);
     }
     expect( function(){airport.land(plane); } ).toThrow("Airport is full, jog on");
   });
 
+  // As the system designer
+  // So that the software can be used for many different airports
+  // I would like a default airport capacity that can be overridden as appropriate
+
+  it("can override the DEFAULTCAPACITY", function() {
+    airport.DEFAULTCAPACITY = 30;
+    expect(airport.DEFAULTCAPACITY).toEqual (30);
+    for(i = 0; i < (airport.DEFAULTCAPACITY); i ++) {
+      airport.land(plane);
+    }
+    expect(airport.landedPlanes.length).toEqual (30);
+  });
+
 });
 
 //
-// As the system designer
-// So that the software can be used for many different airports
-// I would like a default airport capacity that can be overridden as appropriate
 //
 // As an air traffic controller
 // To ensure safety

@@ -1,10 +1,10 @@
 function Airport()  {
   this.landedPlanes = [];
-  DEFAULTCAPACITY = 20;
+  this.DEFAULTCAPACITY = 20;
 }
 
 Airport.prototype.land = function(plane) {
-  if (this.landedPlanes.length >= DEFAULTCAPACITY)
+  if (this.landedPlanes.length >= this.DEFAULTCAPACITY)
     throw "Airport is full, jog on";
   else
     this.landedPlanes.push(plane);
