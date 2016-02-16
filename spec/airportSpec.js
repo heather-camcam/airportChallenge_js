@@ -50,14 +50,17 @@ describe("Airport", function() {
     expect(airport.landedPlanes.length).toEqual (30);
   });
 
+  // As an air traffic controller
+  // To ensure safety
+  // I want to prevent takeoff when weather is stormy
+  it("prevents take off when weather is stormy", function() {
+    // stub random weather function
+    expect( function(){airport.takeOff(plane); } ).toThrow("It's raining men! Hallelujah! (But you can't take off.)");
+  });
+
 });
 
-//
-//
-// As an air traffic controller
-// To ensure safety
-// I want to prevent takeoff when weather is stormy
-//
+
 // As an air traffic controller
 // To ensure safety
 // I want to prevent landing when weather is stormy
